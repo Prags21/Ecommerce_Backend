@@ -1,11 +1,16 @@
 from ..entities import UserCreator
 from ..entities import AuthCreator
+from ..entities import Access, ValidateAccess 
 import traceback
 
 class AddUserUseCase:
     def __init__(self, db):
         self.db = db
         pass
+
+    def validateAccess(self, role):
+        required_access_levels = [Access.CREATE_CUSTOMER, Access.CREATE_SALESAGENT]
+        return ValidateAccess(role, required_access_levels)
 
     def addUser(self, name, email, contact, password, role):
         try:

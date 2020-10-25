@@ -12,7 +12,7 @@ class TokenGenerator:
     def __init__(self):    
         self.key = jwk.JWK.generate(kty='RSA', size=2048)
         if TokenGenerator.__instance != None:
-         raise Exception('This class is a singleton!')
+            raise Exception('This class is a singleton!')
         else:
             TokenGenerator.__instance = self
 

@@ -5,6 +5,7 @@ from ..adapters.UidGenerator import UidGenerator
 from ..adapters import validator
 from ..adapters import Encrypt
 from .product import ProductStatus
+from .auth import Access, ValidateAccess
 
 Status = ProductStatus
 
