@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .controllers import RegisterUserController
+from .controllers import RegisterProductController
 
 
 
@@ -24,4 +25,6 @@ def makeCallback(controller,mtd):
     return callback  
 
 userView= makeCallback(RegisterUserController.registerUser,'POST')    
+productView= makeCallback(RegisterProductController.registerProduct,'POST')    
+
 

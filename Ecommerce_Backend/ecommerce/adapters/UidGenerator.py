@@ -1,3 +1,4 @@
+import uuid 
 class UidGenerator:
    __instance = None
     
@@ -15,8 +16,7 @@ class UidGenerator:
          UidGenerator.__instance = self
 
    def generate(self):
-       self.__counter+=1
-       return self.__counter
+       return uuid.uuid1().hex
 
    def validate(self,id):
-        return self.__counter>=id   
+        return not not id

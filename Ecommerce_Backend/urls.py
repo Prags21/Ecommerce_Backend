@@ -29,6 +29,8 @@ from Ecommerce_Backend.ecommerce import views
 urlpatterns = [
     #path('users/<int:num>', views.userView),
     path('users/', views.userView),
+    path('products/', views.productView),
+
 
    #url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
