@@ -30,6 +30,8 @@ urlpatterns = [
     #path('users/<int:num>', views.userView),
     path('users/', views.userView),
     path('products/', views.productView),
+    path('auth/', views.authView),
+
 
 
    #url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

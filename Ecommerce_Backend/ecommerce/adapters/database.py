@@ -8,9 +8,9 @@ class DBConnection:
         )
         self.db = self.client.ecom
 
-    def __del__(self):
-        if self.client and self.client.close:
-            self.client.close()
+    # def __del__(self):
+    #     if self.client and self.client.close:
+    #         self.client.close()
 
     def createUser(self, user):
         data = {
@@ -25,13 +25,42 @@ class DBConnection:
             print(e)
 
     def getUser(self, email, contact):
-        myquery = {"email": email, "contact": contact}
+        myquery = {"email_id": email, "contact": contact}
         res = None
         try:
-            res = self.db.products.find_one(myquery)
+            res = self.db.users.find_one(myquery)
         except Exception as e:
             print(e)
         return res
+
+    def getUserByEmail(self, email):
+        myquery = {"email_id": email}
+        res = None
+        try:
+            res = self.db.users.find_one(myquery)
+        except Exception as e:
+            print(e)
+        return res
+
+    def getAuthById(self, auth_id):
+        myquery = {"auth_id": auth_id}
+        res = None
+        try:
+            res = self.db.auth.find_one(myquery)
+        except Exception as e:
+            print(e)
+        return res        
+
+    def createAuth(self,auth):
+        data = {
+            "auth_id": auth.getAuthId(),
+            "password": auth.getPassword(),
+            "role": auth.getRole(),
+        }
+        try:
+            self.db.auth.insert_one(data)
+        except Exception as e:
+            print(e)
 
     def createProduct(self,item):
         item = {
@@ -86,3 +115,8 @@ class DBConnection:
             print(e)
         return mylist
 
+
+
+# user=getUserByEmail("abc0")
+# auth=getAuthById(user.getAuthId())
+# print(auth)

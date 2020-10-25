@@ -7,7 +7,7 @@ class AuthFactory:
         self.Encrypt=Encrypt
 
     def createAuth(self,password,auth_id,role):
-        auth = Auth(Encrypt.cipher(password),auth_id,role) 
+        auth = Auth(self.Encrypt.cipher(password),auth_id,role) 
         return auth
 
 class UserFactory:

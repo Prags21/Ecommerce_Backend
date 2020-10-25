@@ -6,5 +6,8 @@ class RegisterUser:
         name=http_request['body']['name']
         email=http_request['body']['email']
         contact=http_request['body']['contact']
-        return self.AddUserUsecase.addUser(name,email,contact)
+        password=http_request['body']['password']
+        role=http_request['body']['role']
+
+        return self.AddUserUsecase.addUser(name,email,contact,password,role)
 
