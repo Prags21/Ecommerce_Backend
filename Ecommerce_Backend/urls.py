@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-#from django.urls import include, path
 from django.conf.urls import include, url
 from django.urls import path
 
@@ -35,8 +34,6 @@ urlpatterns = [
     path('products/edit', views.updateProductView),
     path('products/', views.showAllProductsView),
     path('products/<slug:id>', views.showAProductView),
-
-
 
    #url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

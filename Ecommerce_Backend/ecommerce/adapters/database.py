@@ -101,7 +101,7 @@ class DBConnection:
         myquery = {"product_id": p_id}
         res = None
         try:
-            res = self.db.products.find_one(myquery)
+            res = self.db.products.find_one(myquery,{ "_id": 0})
         except Exception as e:
             print(e)
         return res
@@ -109,14 +109,9 @@ class DBConnection:
     def getAllProducts(self):
         mylist = []
         try:
-            for d in self.db.products.find():
+            for d in self.db.products.find({},{ "_id": 0}):
                 mylist.append(d)
+    
         except Exception as e:
             print(e)
         return mylist
-
-
-
-# user=getUserByEmail("abc0")
-# auth=getAuthById(user.getAuthId())
-# print(auth)

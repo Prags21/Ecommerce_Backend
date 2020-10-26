@@ -82,14 +82,9 @@ WSGI_APPLICATION = 'Ecommerce_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'ecommerce',
-#         'HOST': '127.0.0.1',
-#         'PORT': 27017,
-#     }
-# }
+DATABASES = {
+    'default': {}
+}
 
 
 # Password validation

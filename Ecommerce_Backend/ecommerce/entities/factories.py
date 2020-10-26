@@ -45,5 +45,8 @@ class ProductFactory:
             raise Exception('Invalid Stock')
 
         item = Product(product_id,name,description,price,stock,status) 
-        return item        
+        return item  
+
+    #def getProduct():
+
         

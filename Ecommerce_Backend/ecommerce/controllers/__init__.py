@@ -18,5 +18,5 @@ from ..useCases import ViewProduct
 RegisterUserController= RegisterUser(AddUser, AccessValidation)
 RegisterProductController= RegisterProduct(AddProduct,AccessValidation)
 UpdateProductController= UpdateProducts(UpdateProduct,AccessValidation)
-ViewProductsController = ViewProducts(ViewProduct,AccessValidation)
+ViewProductsController = ViewProducts(ViewProduct)
 AuthUserController = AuthController(GetToken)
