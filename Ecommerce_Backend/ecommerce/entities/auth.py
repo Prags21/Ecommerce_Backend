@@ -13,7 +13,7 @@ class Access:
     UPDATE_ORDER_STATUS = "UPDATE_ORDER_STATUS"
     SEND_MESSAGE = "SEND_MESSAGE"
     PLACE_ORDER = "PLACE_ORDER"
-
+    VIEW_MYORDER = "VIEW_MYORDER"
 
 AccessMap = {
     Role.ADMIN: [
@@ -27,7 +27,9 @@ AccessMap = {
         Access.UPDATE_ORDER_STATUS,
         Access.SEND_MESSAGE,
     ],
-    Role.CUSTOMER: [Access.PLACE_ORDER],
+    Role.CUSTOMER: [
+        Access.PLACE_ORDER,
+        Access.VIEW_MYORDER],
 }
 
 def ValidateAccess(role, required_access_levels):

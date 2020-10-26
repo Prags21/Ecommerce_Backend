@@ -1,6 +1,5 @@
 import pymongo
 
-
 class DBConnection:
     def __init__(self):
         self.client = pymongo.MongoClient(
@@ -42,6 +41,15 @@ class DBConnection:
             print(e)
         return res
 
+    def getUserById(self, auth_id):
+        myquery = {"auth_id": auth_id}
+        res = None
+        try:
+            res = self.db.users.find_one(myquery)
+        except Exception as e:
+            print(e)
+        return res    
+
     def getAuthById(self, auth_id):
         myquery = {"auth_id": auth_id}
         res = None
@@ -59,6 +67,16 @@ class DBConnection:
         }
         try:
             self.db.auth.insert_one(data)
+        except Exception as e:
+            print(e)
+    def updateAuth(self,auth):
+
+        myquery = {"auth_id": auth.getAuthId()}
+        updateCol = {"password": auth.getPassword()}
+        newvalues = {"$set": updateCol}
+
+        try:
+            self.db.auth.update_one(myquery, newvalues)
         except Exception as e:
             print(e)
 
@@ -115,3 +133,64 @@ class DBConnection:
         except Exception as e:
             print(e)
         return mylist
+
+    def createOrder(self, order):
+        item = {
+            "order_id":order.order_id,
+            "product_id": order.product_id,
+            "auth_id": order.auth_id,
+            "timestamp": order.timestamp,
+            "price": order.price,
+            "status": order.status
+        }
+        try:
+            self.db.orders.insert_one(item)
+
+        except Exception as e:
+            print(e)
+
+    def updateOrderStatus(
+        self, o_id, status=None
+    ):
+        myquery = {"order_id": o_id}
+        updateCol = {}
+        if status != None:
+            updateCol["status"] = status
+
+        newvalues = {"$set": updateCol}
+        try:
+            self.db.orders.update_one(myquery, newvalues)
+        except Exception as e:
+            print(e)            
+
+
+    def getAllOrders(self):
+        mylist = []
+        try:
+            for d in self.db.orders.find({},{ "_id": 0}):
+                mylist.append(d)
+    
+        except Exception as e:
+            print(e)
+        return mylist
+
+    def getAllOrdersByUserId(self, auth_id):
+        myquery = {"auth_id": auth_id}
+        mylist = []
+
+        try:
+            for d in self.db.orders.find(myquery,{ "_id": 0}):
+                mylist.append(d)
+        except Exception as e:
+            print(e)
+        return mylist      
+
+    def getOrderByOrderId(self, order_id):
+        myquery = {"order_id": order_id}
+
+        try:
+            res=self.db.orders.find_one(myquery,{ "_id": 0})
+            
+        except Exception as e:
+            print(e)
+        return res             

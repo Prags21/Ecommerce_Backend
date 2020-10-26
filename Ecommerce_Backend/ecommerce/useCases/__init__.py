@@ -6,15 +6,21 @@ from .updateProduct import UpdateProductUseCase
 from .getToken import GetTokenUseCase
 from .accessValidator import AccessValidator
 from .viewProduct import ViewProductUseCase
-
+from .orderProduct import OrderProductUseCase
+from .viewMyOrder import ViewMyOrderUseCase
+from .updateOrderStatus import UpdateOrderStatusUseCase
+from ..adapters import MessageAdapter
 
 conn = DBConnection()
 AddUser = AddUserUseCase(conn)
 AddProduct = AddProductUseCase(conn)
 UpdateProduct = UpdateProductUseCase(conn)
 ViewProduct = ViewProductUseCase(conn)
-GetToken = GetTokenUseCase(conn,Tokenize)
+OrderProduct = OrderProductUseCase(conn)
+GetToken = GetTokenUseCase(conn,Tokenize,MessageAdapter)
 AccessValidation = AccessValidator(conn, Tokenize)
+ViewMyOrder = ViewMyOrderUseCase(conn) 
+UpdateOrderStatus = UpdateOrderStatusUseCase(conn,MessageAdapter)
 
 
 

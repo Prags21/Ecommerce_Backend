@@ -1,6 +1,9 @@
 from .users import User
 from .product import Product
+from .order import Order
+
 from .auth import Auth
+import datetime
 
 class AuthFactory:
     def __init__(self,Encrypt):
@@ -47,6 +50,16 @@ class ProductFactory:
         item = Product(product_id,name,description,price,stock,status) 
         return item  
 
-    #def getProduct():
 
         
+class OrderFactory:
+    def __init__(self,UID,Validator):
+        self.UID=UID
+        self.Validator = Validator
+
+    def createOrder(self, user_id, product_id, price, timestamp, status):
+        order_id=self.UID.generate()
+        if not timestamp:
+            timestamp = datetime.datetime.utcnow()
+        item = Order(order_id, user_id, product_id, price, timestamp, status) 
+        return item  

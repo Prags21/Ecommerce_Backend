@@ -30,10 +30,13 @@ urlpatterns = [
     path('addUsers/', views.userView),
     path('addProducts/', views.productView),
     path('auth/', views.authView),
-    #path('products/<slug:id>', views.viewProductView),
     path('products/edit', views.updateProductView),
     path('products/', views.showAllProductsView),
     path('products/<slug:id>', views.showAProductView),
+    path('products/<slug:id>/order/', views.orderProductView),
+    path('user/myOrders/', views.myOrdersView),
+    path('agent/<slug:id>/updateOrderStatus/', views.updateOrderStatusView),
+
 
    #url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

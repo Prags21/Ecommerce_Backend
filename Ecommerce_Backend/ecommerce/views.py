@@ -7,8 +7,10 @@ from .controllers import RegisterProductController
 from .controllers import UpdateProductController
 from .controllers import ViewProductsController
 from .controllers import AuthUserController
-
-
+from .controllers import OrderProductsController
+from .controllers import MyOrdersController
+from .controllers import UpdateOrderStatusController
+import traceback
 
 def makeCallback(controller,mtd):
     @api_view([mtd])
@@ -23,11 +25,11 @@ def makeCallback(controller,mtd):
             "params":params,
             "method":req.method,
             "path":req.path}
-            #print(http_req)
-            #if(http_req.method)
             return Response(controller(http_req))
         except Exception as e:
             print(e)
+            traceback.print_exc()
+
             return Response("Internal Server Failure")
 
     return callback  
@@ -35,11 +37,13 @@ def makeCallback(controller,mtd):
 userView= makeCallback(RegisterUserController.registerUser,'POST')    
 productView= makeCallback(RegisterProductController.registerProduct,'POST')    
 authView= makeCallback(AuthUserController.fetchToken,'POST')    
+authOTPView =makeCallback(AuthUserController.fetchToken,'POST') 
 updateProductView= makeCallback(UpdateProductController.updateProduct,'PATCH')   
 showAllProductsView =  makeCallback(ViewProductsController.viewAllProduct,'GET')   
 showAProductView =  makeCallback(ViewProductsController.viewAProduct,'GET')   
-
-
+orderProductView =  makeCallback(OrderProductsController.orderProduct,'POST')   
+myOrdersView = makeCallback(MyOrdersController.viewAllOrders,'GET')
+updateOrderStatusView = makeCallback(UpdateOrderStatusController.updateStatus,'PATCH')   
 
 
 
