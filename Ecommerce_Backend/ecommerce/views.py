@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .controllers import RegisterUserController
 from .controllers import RegisterProductController
+from .controllers import UpdateProductController
+from .controllers import ViewProductsController
 from .controllers import AuthUserController
 
 
@@ -33,6 +35,11 @@ def makeCallback(controller,mtd):
 userView= makeCallback(RegisterUserController.registerUser,'POST')    
 productView= makeCallback(RegisterProductController.registerProduct,'POST')    
 authView= makeCallback(AuthUserController.fetchToken,'POST')    
+updateProductView= makeCallback(UpdateProductController.updateProduct,'PATCH')   
+showAllProductsView =  makeCallback(ViewProductsController.viewAllProduct,'GET')   
+showAProductView =  makeCallback(ViewProductsController.viewAProduct,'GET')   
+
+
 
 
 

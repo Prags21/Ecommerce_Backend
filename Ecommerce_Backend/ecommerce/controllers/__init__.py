@@ -5,8 +5,18 @@ from ..useCases import AccessValidation
 from .registerProducts import RegisterProduct
 from .authController import AuthController
 from ..useCases import GetToken
+from .updateProducts import UpdateProducts
+from ..useCases import UpdateProduct
+from .viewProduct import ViewProducts
+from ..useCases import ViewProduct
+
+
+
+
 
 
 RegisterUserController= RegisterUser(AddUser, AccessValidation)
-RegisterProductController= RegisterProduct(AddProduct)
+RegisterProductController= RegisterProduct(AddProduct,AccessValidation)
+UpdateProductController= UpdateProducts(UpdateProduct,AccessValidation)
+ViewProductsController = ViewProducts(ViewProduct,AccessValidation)
 AuthUserController = AuthController(GetToken)

@@ -28,9 +28,13 @@ from Ecommerce_Backend.ecommerce import views
 # # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     #path('users/<int:num>', views.userView),
-    path('users/', views.userView),
-    path('products/', views.productView),
+    path('addUsers/', views.userView),
+    path('addProducts/', views.productView),
     path('auth/', views.authView),
+    #path('products/<slug:id>', views.viewProductView),
+    path('products/edit', views.updateProductView),
+    path('products/', views.showAllProductsView),
+    path('products/<slug:id>', views.showAProductView),
 
 
 

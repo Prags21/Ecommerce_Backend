@@ -1,11 +1,16 @@
 from ..entities import ProductCreator
+from ..entities import Access, ValidateAccess 
 
 class AddProductUseCase:
     def __init__(self, db):
         self.db = db
         pass
 
-    def addProduct(self, name, description, price, stock,status, token):
+    def validateAccess(self, role):
+        required_access_levels = [Access.ADD_PRODUCT]
+        return ValidateAccess(role, required_access_levels)
+
+    def addProduct(self, name, description, price, stock,status):
         #VALIDATION
         try:
             # Creates object of Product Entity
