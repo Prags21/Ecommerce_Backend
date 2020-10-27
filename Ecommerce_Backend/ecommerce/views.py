@@ -9,6 +9,7 @@ from .controllers import ViewProductsController
 from .controllers import AuthUserController
 from .controllers import OrderProductsController
 from .controllers import MyOrdersController
+from .controllers import AllOrdersController
 from .controllers import UpdateOrderStatusController
 import traceback
 
@@ -44,6 +45,6 @@ showAProductView =  makeCallback(ViewProductsController.viewAProduct,'GET')
 orderProductView =  makeCallback(OrderProductsController.orderProduct,'POST')   
 myOrdersView = makeCallback(MyOrdersController.viewAllOrders,'GET')
 updateOrderStatusView = makeCallback(UpdateOrderStatusController.updateStatus,'PATCH')   
-
+allOrdersView = makeCallback(AllOrdersController.viewAllOrders,'GET')
 
 

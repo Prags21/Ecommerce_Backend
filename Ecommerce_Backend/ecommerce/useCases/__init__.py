@@ -10,6 +10,8 @@ from .orderProduct import OrderProductUseCase
 from .viewMyOrder import ViewMyOrderUseCase
 from .updateOrderStatus import UpdateOrderStatusUseCase
 from ..adapters import MessageAdapter
+from .viewAllOrder import ViewAllOrderUseCase
+
 
 conn = DBConnection()
 AddUser = AddUserUseCase(conn)
@@ -21,6 +23,7 @@ GetToken = GetTokenUseCase(conn,Tokenize,MessageAdapter)
 AccessValidation = AccessValidator(conn, Tokenize)
 ViewMyOrder = ViewMyOrderUseCase(conn) 
 UpdateOrderStatus = UpdateOrderStatusUseCase(conn,MessageAdapter)
+ViewAllOrder = ViewAllOrderUseCase(conn) 
 
 
 

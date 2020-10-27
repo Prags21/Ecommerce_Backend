@@ -36,6 +36,7 @@ urlpatterns = [
     path('products/<slug:id>/order/', views.orderProductView),
     path('user/myOrders/', views.myOrdersView),
     path('agent/<slug:id>/updateOrderStatus/', views.updateOrderStatusView),
+    path('agent/allOrders/', views.allOrdersView),
 
 
    #url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

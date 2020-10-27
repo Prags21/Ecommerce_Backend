@@ -193,4 +193,15 @@ class DBConnection:
             
         except Exception as e:
             print(e)
+        return res            
+
+    def getOrderByUserAndProductId(self, auth_id , product_id):
+        myquery = {"auth_id": auth_id ,"product_id": product_id }
+        res = None
+        try:
+            temp=list(self.db.orders.find(myquery,{ "_id": 0}).sort([("timestamp",-1)]))
+            if len(temp) >0:
+                res=temp[0]
+        except Exception as e:
+            print(e)
         return res             

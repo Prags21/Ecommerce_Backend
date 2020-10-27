@@ -18,7 +18,6 @@ class OrderProductUseCase:
             try:
                 status = "PLACED"
                 order = OrderCreator.createOrder(auth_id, product_id, item['price'], None, status)
-
                 self.db.createOrder(order)
                 stock_k=item['stock']-1
                 #print(stock_k)

@@ -15,14 +15,17 @@ from .viewMyOrders import ViewMyOrders
 from ..useCases import ViewMyOrder
 from .updateOrderStatus import UpdateStatus
 from ..useCases import UpdateOrderStatus
+from .viewAllOrder import ViewAllOrders
+from ..useCases import ViewAllOrder
 
 
 
 RegisterUserController= RegisterUser(AddUser, AccessValidation)
 RegisterProductController= RegisterProduct(AddProduct,AccessValidation)
 UpdateProductController= UpdateProducts(UpdateProduct,AccessValidation)
-ViewProductsController = ViewProducts(ViewProduct)
+ViewProductsController = ViewProducts(ViewProduct,AccessValidation)
 AuthUserController = AuthController(GetToken)
 OrderProductsController = OrderProducts(OrderProduct,AccessValidation)
 MyOrdersController= ViewMyOrders(ViewMyOrder,AccessValidation)
 UpdateOrderStatusController = UpdateStatus(UpdateOrderStatus,AccessValidation)
+AllOrdersController = ViewAllOrders(ViewAllOrder,AccessValidation)
