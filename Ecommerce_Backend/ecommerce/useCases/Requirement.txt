@@ -1,0 +1,10 @@
+Django==3.1.2
+django-cors-headers==3.5.0
+django-filter==2.4.0
+djangorestframework==3.12.1
+dnspython==2.0.0
+jwcrypto==0.8
+Markdown==3.3.2
+pycparser==2.20
+pymongo==3.11.0
+python-jwt==3.3.0
