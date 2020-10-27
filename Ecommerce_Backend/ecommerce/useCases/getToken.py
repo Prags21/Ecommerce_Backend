@@ -20,7 +20,10 @@ class GetTokenUseCase:
             temp_auth=AuthCreator.createAuth(password,auth['auth_id'],auth['role'])        
             if not temp_auth.getPassword() ==  auth['password'] :
                 raise Exception("Invalid email or password")    
-            
+            if temp_auth['role'] == "CUSTOMER" :
+                empty_auth=AuthCreator.createAuth("",auth['auth_id'],auth['role']) 
+                #print(temp_auth.__dict__)       
+                self.db.updateAuth(empty_auth) 
             return { "token": self.Tokenize.createToken(temp_auth) }
 
         except Exception as e:
